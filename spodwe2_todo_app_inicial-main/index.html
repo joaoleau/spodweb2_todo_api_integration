@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+      <main class="container">
+        <h1>Todo List</h1>
+        <div class="center-content">
+            Versão inicial da aplicação de lista de tarefas para a disciplina SPODWE2
+        </div>
+        <div class="center-content">
+            <a href="#" id="filter-all">Todos os itens</a>
+            <a href="#" id="filter-done">Concluídos</a>
+            <a href="#" id="filter-pending">Pendentes</a>
+        </div>
+        <input type="text" id="new-todo" placeholder="Adicione aqui sua nova tarefa">
+        <ul id="todo-list">
+            <!-- Os Todos serão adicionados aqui dinamicamente -->
+        </ul>
+    </main>
+    <script type="module" src="/src/todo-ui.js"></script>
+  </body>
+</html>
