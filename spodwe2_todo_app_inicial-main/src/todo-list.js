@@ -1,5 +1,3 @@
-const todos = [];
-
 export async function getTodos() {
 
     return await fetch("http://localhost:3000/todos").then((response) => {
@@ -11,19 +9,37 @@ export async function getTodos() {
     });
 }
 
-export function addTodo(todoText) {
-    const lastId = todos.length > 0 ? todos[todos.length - 1].id : 0;
 
-    const newTodo = {
-        id: lastId + 1,
-        text: todoText,
-        done: false,
-    };
+export async function addTodo(todoText) {
+    return await fetch("http://localhost:3000/todos", {
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json",
+          },
+        body: JSON.stringify({ text: todoText })
+    }).then((response) => {
+        
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
 
-    todos.push(newTodo);
+        return response.json();
+    });
 }
 
-export function markTodoAsDone(todoId) {
-    const todo = todos.find((todo) => todo.id === todoId);
-    todo.done = true;
+export async function markTodoAsDone(todoId) {
+    return await fetch(`http://localhost:3000/todos/${todoId}`, {
+        method:"PUT",
+        headers: {
+            "Content-Type": "application/json",
+          },
+        body: JSON.stringify({ done: true })
+    }).then((response) => {
+        
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        return response.json();
+    });
 }
